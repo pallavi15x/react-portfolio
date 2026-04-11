@@ -1,36 +1,38 @@
-import { useState } from "react";
+import { motion } from "framer-motion";
 
-function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+function Hero() {
   return (
-    <nav className="bg-black text-white px-6 py-4 fixed w-full top-0 z-50 shadow-md">
-      
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Pallavi</h1>
+    <section className="h-screen flex items-center justify-center bg-gradient-to-r from-black via-gray-900 to-black text-white">
+      <div className="text-center">
+        
+        <motion.h1
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-5xl md:text-6xl font-bold"
+        >
+          Hi, I'm <span className="text-blue-500">Pallavi</span> 👋
+        </motion.h1>
 
-        <div className="hidden md:flex gap-8">
-          <a href="#home" className="hover:text-blue-400">Home</a>
-          <a href="#about" className="hover:text-blue-400">About</a>
-          <a href="#projects" className="hover:text-blue-400">Projects</a>
-          <a href="#contact" className="hover:text-blue-400">Contact</a>
-        </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="mt-4 text-lg text-gray-300"
+        >
+          Frontend Developer | React Enthusiast 🚀
+        </motion.p>
 
-        <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-        </div>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          className="mt-6 px-6 py-3 bg-blue-500 rounded-lg shadow-lg hover:bg-blue-600"
+        >
+          View My Work
+        </motion.button>
+
       </div>
-
-      {menuOpen && (
-        <div className="flex flex-col mt-4 gap-4 md:hidden text-center">
-          <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
-          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-          <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
-          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-        </div>
-      )}
-    </nav>
+    </section>
   );
 }
 
-export default Navbar;
+export default Hero;
