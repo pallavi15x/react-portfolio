@@ -1,35 +1,44 @@
+import { Reveal } from "./Reveal";
+
 function Contact() {
   return (
-    <section className="py-20 bg-black text-white text-center">
-      <h2 className="text-4xl font-bold mb-6">Contact Me</h2>
+    <section id="contact" className="w-full h-screen p-4 text-white">
+      <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
+        <Reveal>
+          <div className="pb-8 text-center">
+            <h2 className="text-4xl font-bold inline border-b-4 border-blue-500">Contact</h2>
+            <p className="py-6 text-gray-400 text-xl">Submit the form below to get in touch with me</p>
+          </div>
+        </Reveal>
 
-      <p className="text-gray-400 mb-8">
-        Let's connect and build something amazing 🚀
-      </p>
-
-      <form className="max-w-xl mx-auto flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Your Name"
-          className="p-3 rounded bg-gray-800 border border-gray-700"
-        />
-
-        <input
-          type="email"
-          placeholder="Your Email"
-          className="p-3 rounded bg-gray-800 border border-gray-700"
-        />
-
-        <textarea
-          placeholder="Your Message"
-          rows="4"
-          className="p-3 rounded bg-gray-800 border border-gray-700"
-        ></textarea>
-
-        <button className="bg-blue-500 py-3 rounded hover:bg-blue-600">
-          Send Message
-        </button>
-      </form>
+        <div className="flex justify-center items-center">
+          <form action="https://getform.io/f/your-id-here" method="POST" className="flex flex-col w-full md:w-1/2">
+            <Reveal>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                className="p-4 bg-transparent border-2 border-gray-800 rounded-xl text-white focus:outline-none focus:border-blue-500 w-full mb-4"
+              />
+              <input
+                type="text"
+                name="email"
+                placeholder="Enter your email"
+                className="p-4 bg-transparent border-2 border-gray-800 rounded-xl text-white focus:outline-none focus:border-blue-500 w-full mb-4"
+              />
+              <textarea
+                name="message"
+                placeholder="Enter your message"
+                rows="6"
+                className="p-4 bg-transparent border-2 border-gray-800 rounded-xl text-white focus:outline-none focus:border-blue-500 w-full"
+              ></textarea>
+              <button className="text-white bg-blue-600 px-6 py-3 my-8 mx-auto flex items-center rounded-full hover:scale-110 duration-300 font-bold shadow-lg shadow-blue-500/20">
+                Let's Talk
+              </button>
+            </Reveal>
+          </form>
+        </div>
+      </div>
     </section>
   );
 }

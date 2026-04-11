@@ -1,38 +1,21 @@
 import { motion } from "framer-motion";
+import { TypeAnimation } from 'react-type-animation';
 
 function Hero() {
   return (
-    <section className="h-screen flex items-center justify-center bg-gradient-to-r from-black via-gray-900 to-black text-white">
+    <section id="home" className="h-screen flex items-center justify-center px-6">
       <div className="text-center">
-        
-        <motion.h1
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-5xl md:text-6xl font-bold"
-        >
-          Hi, I'm <span className="text-blue-500">Pallavi</span> 👋
+        <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-5xl md:text-8xl font-black mb-4">
+          PALLAVI
         </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-4 text-lg text-gray-300"
-        >
-          Frontend Developer | React Enthusiast 🚀
-        </motion.p>
-
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          className="mt-6 px-6 py-3 bg-blue-500 rounded-lg shadow-lg hover:bg-blue-600"
-        >
-          View My Work
-        </motion.button>
-
+        <div className="text-xl md:text-3xl text-blue-400 font-light tracking-widest">
+          <TypeAnimation sequence={['FRONTEND DEVELOPER', 1000, 'CREATIVE DESIGNER', 1000, 'REACT EXPERT', 1000]} repeat={Infinity} />
+        </div>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="mt-10">
+          <a href="#projects" className="bg-blue-600 px-10 py-4 rounded-full font-bold hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20">VIEW PROJECTS</a>
+        </motion.div>
       </div>
     </section>
   );
 }
-
 export default Hero;
