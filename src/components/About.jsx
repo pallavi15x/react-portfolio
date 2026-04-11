@@ -1,16 +1,26 @@
-function About() {
-  return (
-    <section className="py-20 bg-black text-white text-center">
-      <h2 className="text-4xl font-bold mb-6">About Me</h2>
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 
-      <p className="max-w-2xl mx-auto text-gray-400">
-        I am a passionate Frontend Developer who loves building modern,
-        responsive, and user-friendly websites using React and Tailwind CSS.
-        I enjoy turning ideas into reality through code and continuously
-        learning new technologies.
-      </p>
-    </section>
+function App() {
+  return (
+    <div className="bg-black min-h-screen">
+      <Navbar />
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+      
+      {/* Simple Footer */}
+      <footer className="py-8 bg-black text-center text-gray-500 text-sm border-t border-gray-900">
+        © {new Date().getFullYear()} Pallavi. All rights reserved.
+      </footer>
+    </div>
   );
 }
 
-export default About;
+export default App;

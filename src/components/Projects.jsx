@@ -3,47 +3,45 @@ import { motion } from "framer-motion";
 const projects = [
   {
     title: "Finance Tracker",
-    desc: "Track income & expenses with charts",
-    github: "https://github.com/your-username/finance-tracker",
-    live: "https://your-live-link.com"
+    desc: "A React app to track income and expenses with charts.",
+    link: "#",
   },
   {
     title: "Portfolio Website",
-    desc: "Personal portfolio using React & Tailwind",
-    github: "https://github.com/your-username/react-portfolio",
-    live: "#"
+    desc: "Personal portfolio built using React and Tailwind.",
+    link: "#",
   },
   {
-    title: "Todo App",
-    desc: "Manage tasks with local storage",
-    github: "https://github.com/your-username/todo-app",
-    live: "#"
-  }
+    title: "Weather App",
+    desc: "Fetches real-time weather using API.",
+    link: "#",
+  },
 ];
 
 function Projects() {
   return (
-    <section id="projects" className="bg-black text-white py-16 px-6 text-center pt-24">
-      <h2 className="text-3xl font-bold mb-8">My Projects</h2>
+    <section className="py-20 bg-gray-900 text-white text-center">
+      <h2 className="text-4xl font-bold mb-12">My Projects</h2>
 
-      <div className="grid md:grid-cols-3 gap-6">
-        {projects.map((p, i) => (
+      <div className="grid md:grid-cols-3 gap-8 px-6">
+        {projects.map((project, index) => (
           <motion.div
-            key={i}
+            key={index}
             whileHover={{ scale: 1.05 }}
-            className="bg-gray-800 p-6 rounded-xl"
+            className="bg-black p-6 rounded-xl shadow-lg border border-gray-800"
           >
-            <h3 className="text-xl font-semibold">{p.title}</h3>
-            <p className="text-gray-400 mt-2">{p.desc}</p>
+            <h3 className="text-2xl font-semibold text-blue-400">
+              {project.title}
+            </h3>
 
-            <div className="flex justify-center gap-4 mt-4">
-              <a href={p.github} target="_blank" className="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600">
-                GitHub
-              </a>
-              <a href={p.live} target="_blank" className="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">
-                Live
-              </a>
-            </div>
+            <p className="mt-3 text-gray-400">{project.desc}</p>
+
+            <a
+              href={project.link}
+              className="inline-block mt-4 text-blue-500 hover:underline"
+            >
+              View Project →
+            </a>
           </motion.div>
         ))}
       </div>
