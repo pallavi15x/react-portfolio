@@ -1,41 +1,45 @@
 import React from 'react';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaGithub, FaFigma, FaFire } from 'react-icons/fa';
-import { SiTailwindcss } from 'react-icons/si';
-
-const skills = [
-  { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26" },
-  { name: "CSS3", icon: <FaCss3Alt />, color: "#1572B6" },
-  { name: "JS", icon: <FaJs />, color: "#F7DF1E" },
-  { name: "React", icon: <FaReact />, color: "#61DAFB" },
-  { name: "Tailwind", icon: <SiTailwindcss />, color: "#06B6D4" },
-  { name: "Firebase", icon: <FaFire />, color: "#FFCA28" },
-  { name: "Figma", icon: <FaFigma />, color: "#F24E1E" },
-  { name: "Github", icon: <FaGithub />, color: "#FEFAE0" },
-];
+import { motion } from 'framer-motion';
+import { FaReact, FaHtml5, FaCss3Alt, FaJsSquare, FaNodeJs, FaGithub } from 'react-icons/fa';
+import { SiTailwindcss, SiMongodb } from 'react-icons/si';
 
 const Skills = () => {
+  const skills = [
+    { name: 'React', icon: <FaReact />, level: 'Advanced' },
+    { name: 'JavaScript', icon: <FaJsSquare />, level: 'Intermediate' },
+    { name: 'Tailwind', icon: <SiTailwindcss />, level: 'Advanced' },
+    { name: 'Node.js', icon: <FaNodeJs />, level: 'Intermediate' },
+    { name: 'MongoDB', icon: <SiMongodb />, level: 'Basic' },
+    { name: 'HTML5', icon: <FaHtml5 />, level: 'Expert' },
+    { name: 'CSS3', icon: <FaCss3Alt />, level: 'Expert' },
+    { name: 'GitHub', icon: <FaGithub />, level: 'Advanced' },
+  ];
+
   return (
-    <section id="skills" className="py-32 px-6">
+    <section id="skills" className="py-24 px-6 bg-[#283618]">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-20">
-          <h2 className="text-5xl md:text-7xl font-black uppercase text-[#FEFAE0]">
-            Toolkit<span className="text-[#DDA15E]">.</span>
-          </h2>
+        <div className="text-center mb-16">
+          <p className="text-[#DDA15E] font-bold uppercase tracking-[0.5em] text-[10px] mb-2">02. My Arsenal</p>
+          <h2 className="text-5xl md:text-7xl font-black text-[#FEFAE0] uppercase">Tech Stack<span className="text-[#DDA15E]">.</span></h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {skills.map((skill, index) => (
-            <div key={index} className="glass-card p-10 flex flex-col items-center group">
-              <div 
-                className="text-5xl mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
-                style={{ color: skill.color }}
-              >
+            <motion.div 
+              key={index}
+              whileHover={{ y: -5, backgroundColor: "rgba(221, 161, 94, 0.1)" }}
+              className="p-8 border border-[#FEFAE0]/10 rounded-2xl flex flex-col items-center justify-center transition-all group"
+            >
+              <div className="text-4xl text-[#FEFAE0]/50 group-hover:text-[#DDA15E] transition-colors mb-4">
                 {skill.icon}
               </div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-[#FEFAE0]/40 group-hover:text-[#FEFAE0]">
+              <h3 className="text-[#FEFAE0] font-bold uppercase tracking-widest text-[10px]">
                 {skill.name}
-              </span>
-            </div>
+              </h3>
+              <p className="text-[#DDA15E] text-[8px] uppercase mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                {skill.level}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>

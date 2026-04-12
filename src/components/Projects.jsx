@@ -27,9 +27,31 @@ function Projects() {
   }, []);
 
   return (
-    /* CRITICAL: id="works" so your Navbar link works! 
-       Used scroll-mt-24 to stop the navbar from covering the title */
-    <section id="works" className="py-32 px-6 max-w-7xl mx-auto scroll-mt-24">
+    <section id="works" className="py-32 px-6 max-w-7xl mx-auto scroll-mt-24 bg-[#283618]">
+      {/* CSS for the Mouse Glow Effect */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        .glass-card::before {
+          background: radial-gradient(
+            800px circle at var(--mouse-x) var(--mouse-y),
+            rgba(221, 161, 94, 0.15),
+            transparent 40%
+          );
+          border-radius: inherit;
+          content: "";
+          height: 100%;
+          left: 0px;
+          opacity: 0;
+          transition: opacity 500ms;
+          position: absolute;
+          top: 0px;
+          width: 100%;
+          z-index: 3;
+        }
+        .glass-card:hover::before {
+          opacity: 1;
+        }
+      `}} />
+
       <div className="flex flex-col mb-24">
         <h2 className="text-7xl md:text-8xl font-black uppercase tracking-tighter text-[#FEFAE0] leading-none">
           WORKS<span className="text-[#DDA15E]">.</span>
@@ -41,32 +63,44 @@ function Projects() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {projects.map((p, i) => (
-          /* Glass card using your #606C38 Olive Green base */
-          <div key={i} className="glass-card p-12 h-[500px] flex flex-col justify-between group bg-[#606C38]/10 border border-[#606C38]/20 rounded-[40px] relative overflow-hidden">
-            <div className="flex justify-between items-start relative z-10">
-              <div className="space-y-3">
-                <span className="text-[#DDA15E] font-mono text-[10px] uppercase tracking-[0.4em] font-black">
-                  {p.tech}
-                </span>
-                <h3 className="text-4xl font-black uppercase text-[#FEFAE0] leading-tight">
-                  {p.title}
-                </h3>
-              </div>
-              {/* Giant number indicator */}
-              <span className="text-[#FEFAE0]/5 font-black italic text-7xl group-hover:text-[#DDA15E]/10 transition-all">
-                0{i+1}
+          <div 
+            key={i} 
+            className="glass-card p-10 h-[450px] flex flex-col justify-between group bg-[#606C38]/10 border border-[#606C38]/20 rounded-[40px] relative overflow-hidden transition-transform duration-500 hover:-translate-y-2"
+          >
+            {/* Background number - Behind content */}
+            <span className="absolute top-10 right-10 text-[#FEFAE0]/5 font-black italic text-8xl group-hover:text-[#DDA15E]/10 transition-all pointer-events-none z-0">
+              0{i+1}
+            </span>
+
+            <div className="relative z-10 space-y-4">
+              <span className="text-[#DDA15E] font-mono text-[10px] uppercase tracking-[0.4em] font-black block">
+                {p.tech}
               </span>
+              <h3 className="text-4xl font-black uppercase text-[#FEFAE0] leading-tight max-w-[80%]">
+                {p.title}
+              </h3>
             </div>
             
             <div className="flex items-center gap-6 relative z-10">
-              <a href={p.live} target="_blank" rel="noreferrer" 
-                 className="w-16 h-16 rounded-full border border-[#FEFAE0]/10 flex items-center justify-center text-[#FEFAE0] hover:bg-[#FEFAE0] hover:text-[#283618] transition-all duration-500">
+              <a 
+                href={p.live} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="w-16 h-16 rounded-full border border-[#FEFAE0]/10 flex items-center justify-center text-[#FEFAE0] hover:bg-[#DDA15E] hover:border-[#DDA15E] hover:text-[#283618] transition-all duration-500 shadow-xl"
+              >
                 <FaArrowUpRightFromSquare size={20} />
               </a>
-              <div className="h-[1px] flex-grow bg-[#606C38]"></div>
-              <a href={p.github} target="_blank" rel="noreferrer" 
-                 className="text-[10px] font-black uppercase tracking-widest text-[#FEFAE0]/30 hover:text-[#DDA15E] transition-all">
-                Github
+              
+              <div className="h-[1px] flex-grow bg-[#606C38]/40"></div>
+              
+              <a 
+                href={p.github} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="group/link flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#FEFAE0]/30 hover:text-[#FEFAE0] transition-all"
+              >
+                <FaGithub size={18} className="group-hover/link:text-[#DDA15E]" />
+                <span className="hidden sm:inline">Github</span>
               </a>
             </div>
           </div>

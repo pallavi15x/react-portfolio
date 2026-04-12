@@ -1,68 +1,86 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import animeImg from '../assets/Anime.jpeg';
+
+// Quick Reveal Helper Component
+const Reveal = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+  >
+    {children}
+  </motion.div>
+);
 
 const About = () => {
   return (
-    <section id="about" className="py-32 px-6 bg-[#283618] overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+    <section id="about" className="py-32 px-6 bg-[#283618] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
-        {/* Left Side: Animated Image Frame */}
+        {/* LEFT SIDE: Decorative Element */}
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="relative"
+          className="relative hidden lg:block"
         >
-          <div className="absolute -bottom-6 -right-6 w-full h-full bg-[#DDA15E] rounded-[40px] z-0 opacity-20" />
-          <div className="relative z-10 w-full h-[500px] overflow-hidden rounded-[40px] border border-[#FEFAE0]/10 shadow-2xl bg-[#283618]">
-            <img src={animeImg} className="w-full h-full object-cover" alt="About" />
-          </div>
-        </motion.div>
-
-        {/* Right Side: Content */}
-        <motion.div 
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <h2 className="text-5xl md:text-7xl font-black uppercase text-[#FEFAE0] mb-8">
-            The Vision<span className="text-[#DDA15E]">.</span>
-          </h2>
-          
-          <p className="text-[#FEFAE0]/70 text-lg leading-relaxed mb-8">
-            I am a developer driven by the intersection of <span className="text-[#DDA15E] font-bold">Nature & Technology</span>. 
-            By blending the organic <span className="text-[#DDA15E] font-bold uppercase">Pine & Earth</span> palette 
-            with modern high-performance code, I create digital spaces that feel both grounded and cutting-edge.
-          </p>
-
-          {/* New Content: Core Philosophy Blocks */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
-            <div className="p-6 border border-[#FEFAE0]/10 rounded-2xl bg-[#606C38]/20">
-              <h3 className="text-[#DDA15E] font-bold uppercase tracking-widest text-xs mb-3">01. Aesthetic</h3>
-              <p className="text-[#FEFAE0]/50 text-sm italic">Clean lines, organic textures, and a focus on visual harmony.</p>
-            </div>
-            
-            <div className="p-6 border border-[#FEFAE0]/10 rounded-2xl bg-[#606C38]/20">
-              <h3 className="text-[#DDA15E] font-bold uppercase tracking-widest text-xs mb-3">02. Performance</h3>
-              <p className="text-[#FEFAE0]/50 text-sm italic">Fast loading times and smooth motion for a premium user feel.</p>
-            </div>
-          </div>
-
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="mt-12 flex items-center gap-4"
-          >
-            <div className="h-[1px] w-12 bg-[#DDA15E]"></div>
-            <span className="text-[#FEFAE0]/30 uppercase text-[10px] tracking-[0.5em] font-bold">
-              Driven by Curiosity
+          <div className="w-full h-[550px] border border-[#DDA15E]/20 rounded-[40px] relative overflow-hidden flex items-center justify-center bg-[#606C38]/5">
+            <span className="text-[#DDA15E]/5 text-[300px] font-black absolute -bottom-20 -left-10 select-none">
+              A
             </span>
-          </motion.div>
+            <div className="p-12 text-center relative z-10">
+              <h3 className="text-[#FEFAE0] text-4xl font-black uppercase tracking-tighter mb-4 leading-none">
+                Based in <br/><span className="text-[#DDA15E]">India</span>
+              </h3>
+              <div className="h-[1px] w-12 bg-[#DDA15E] mx-auto my-6"></div>
+              <p className="text-[#FEFAE0]/40 text-[10px] uppercase tracking-[0.5em] font-bold">
+                Available for Remote Work
+              </p>
+            </div>
+          </div>
         </motion.div>
+
+        {/* RIGHT SIDE: Content */}
+        <div className="space-y-10">
+          <Reveal>
+            <p className="text-[#DDA15E] font-black uppercase tracking-[0.5em] text-[10px] mb-4 flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-[#DDA15E]"></span> 01. Who am I?
+            </p>
+            <h2 className="text-6xl md:text-8xl font-black text-[#FEFAE0] uppercase leading-[0.9] mb-8 tracking-tighter">
+              Turning code <br/>into <span className="text-[#DDA15E]">Art.</span>
+            </h2>
+          </Reveal>
+          
+          <Reveal>
+            <div className="space-y-6 text-[#FEFAE0]/70 text-lg leading-relaxed font-medium max-w-xl">
+              <p>
+                I am <span className="text-[#FEFAE0] font-bold underline decoration-[#DDA15E] underline-offset-4">Pallavi</span>, 
+                a passionate Full Stack Developer dedicated to building digital experiences that are as functional as they are beautiful.
+              </p>
+              <p>
+                My journey evolved into a deep love for creating clean, optimized code and interactive user interfaces. 
+                I specialize in the <span className="text-[#FEFAE0]">MERN stack</span> and modern CSS frameworks like Tailwind.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="mt-12 flex flex-wrap gap-12">
+               <div className="group">
+                 <h4 className="text-5xl font-black text-[#DDA15E] group-hover:scale-110 transition-transform cursor-default">10+</h4>
+                 <p className="text-[#FEFAE0]/40 text-[10px] uppercase font-bold tracking-widest mt-2">Projects Done</p>
+               </div>
+               <div className="w-[1px] h-16 bg-[#FEFAE0]/10 hidden sm:block"></div>
+               <div className="group">
+                 <h4 className="text-5xl font-black text-[#FEFAE0] group-hover:text-[#DDA15E] transition-colors cursor-default">2026</h4>
+                 <p className="text-[#FEFAE0]/40 text-[10px] uppercase font-bold tracking-widest mt-2">Current Goal</p>
+               </div>
+            </div>
+          </Reveal>
+        </div>
+
       </div>
     </section>
   );
