@@ -24,6 +24,7 @@ const Contact = () => {
           
           {/* This sends the email to you */}
           <input type="hidden" name="to_name" value="Pallavi" />
+          
           <input type="hidden" name="subject" value="New Portfolio Message" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
