@@ -1,35 +1,79 @@
-import { Reveal } from "./Reveal";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 const projects = [
-  { title: "Finance Tracker", tech: "React, Chart.js", desc: "Expense monitoring dashboard." },
-  { title: "Task Manager", tech: "React, Redux", desc: "Drag & drop task organization." },
-  { title: "Modern Quiz App", tech: "JavaScript, Tailwind", desc: "Interactive quiz with real-time scoring." },
-  { title: "Glass Calculator", tech: "HTML, CSS, JS", desc: "Premium UI Neumorphic calculator." },
-  { title: "Weather Live", tech: "OpenWeather API", desc: "Global weather tracking app." },
-  { title: "Portfolio V2", tech: "React, Framer Motion", desc: "My interactive developer portfolio." },
+  { title: "Finance Tracker", tech: "React / D3.JS", github: "https://github.com/pallavi15x/finance-tracker", live: "https://pallavi15x.github.io/finance-tracker" },
+  { title: "Task Manager", tech: "Firebase", github: "https://github.com/pallavi15x/task-manager", live: "https://pallavi15x.github.io/task-manager" },
+  { title: "Quiz Master", tech: "Javascript", github: "https://github.com/pallavi15x/quiz-app", live: "https://pallavi15x.github.io/quiz-app/" },
+  { title: "Calculator App", tech: "Algorithm", github: "https://github.com/pallavi15x/CALCULATOR-APP", live: "https://pallavi15x.github.io/CALCULATOR-APP/" },
+  { title: "Modern UI Project", tech: "Figma", github: "https://github.com/pallavi15x/MyProject", live: "https://pallavi15x.github.io/MyProject/" },
+  { title: "Developer Portfolio", tech: "Motion", github: "https://github.com/pallavi15x/Portfolio", live: "https://pallavi15x.github.io/Portfolio/" },
 ];
 
 function Projects() {
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const cards = document.getElementsByClassName("glass-card");
+      for (const card of cards) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
+      }
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
-    <section id="projects" className="py-24 px-6 max-w-7xl mx-auto">
-      <Reveal><h2 className="text-4xl font-bold mb-16 text-center">SELECTED <span className="text-blue-500">WORKS</span></h2></Reveal>
-      <div className="grid md:grid-cols-3 gap-8">
+    /* CRITICAL: id="works" so your Navbar link works! 
+       Used scroll-mt-24 to stop the navbar from covering the title */
+    <section id="works" className="py-32 px-6 max-w-7xl mx-auto scroll-mt-24">
+      <div className="flex flex-col mb-24">
+        <h2 className="text-7xl md:text-8xl font-black uppercase tracking-tighter text-[#FEFAE0] leading-none">
+          WORKS<span className="text-[#DDA15E]">.</span>
+        </h2>
+        <p className="text-[#FEFAE0]/40 mt-6 max-w-md text-xs font-bold uppercase tracking-[0.3em]">
+          // Selected Digital Exhibits
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {projects.map((p, i) => (
-          <Reveal key={i}>
-            <motion.div whileHover={{ y: -10 }} className="bg-gray-900/40 backdrop-blur-md p-8 rounded-3xl border border-gray-800 hover:border-blue-500/50 transition-all group">
-              <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-400">{p.title}</h3>
-              <p className="text-blue-500 text-sm mb-4 font-mono">{p.tech}</p>
-              <p className="text-gray-400 mb-6">{p.desc}</p>
-              <div className="flex justify-between">
-                <a href="#" className="text-sm font-bold hover:underline">GITHUB</a>
-                <a href="#" className="text-sm font-bold text-blue-500 hover:underline">LIVE DEMO</a>
+          /* Glass card using your #606C38 Olive Green base */
+          <div key={i} className="glass-card p-12 h-[500px] flex flex-col justify-between group bg-[#606C38]/10 border border-[#606C38]/20 rounded-[40px] relative overflow-hidden">
+            <div className="flex justify-between items-start relative z-10">
+              <div className="space-y-3">
+                <span className="text-[#DDA15E] font-mono text-[10px] uppercase tracking-[0.4em] font-black">
+                  {p.tech}
+                </span>
+                <h3 className="text-4xl font-black uppercase text-[#FEFAE0] leading-tight">
+                  {p.title}
+                </h3>
               </div>
-            </motion.div>
-          </Reveal>
+              {/* Giant number indicator */}
+              <span className="text-[#FEFAE0]/5 font-black italic text-7xl group-hover:text-[#DDA15E]/10 transition-all">
+                0{i+1}
+              </span>
+            </div>
+            
+            <div className="flex items-center gap-6 relative z-10">
+              <a href={p.live} target="_blank" rel="noreferrer" 
+                 className="w-16 h-16 rounded-full border border-[#FEFAE0]/10 flex items-center justify-center text-[#FEFAE0] hover:bg-[#FEFAE0] hover:text-[#283618] transition-all duration-500">
+                <FaArrowUpRightFromSquare size={20} />
+              </a>
+              <div className="h-[1px] flex-grow bg-[#606C38]"></div>
+              <a href={p.github} target="_blank" rel="noreferrer" 
+                 className="text-[10px] font-black uppercase tracking-widest text-[#FEFAE0]/30 hover:text-[#DDA15E] transition-all">
+                Github
+              </a>
+            </div>
+          </div>
         ))}
       </div>
     </section>
   );
 }
+
 export default Projects;

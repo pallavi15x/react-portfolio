@@ -2,32 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+:root {
+  --pine: #283618;
+  --olive: #606C38;
+  --cornsilk: #FEFAE0;
+  --earth: #DDA15E;
 }
 
 body {
-  margin: 0;
-  background-color: #000;
-  color: white;
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
+  background-color: var(--pine);
+  color: var(--cornsilk);
+  scroll-behavior: smooth;
 }
 
-/* Animated Mesh Background */
-.mesh-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-image: 
-    radial-gradient(at 0% 0%, hsla(220,100%,15%,1) 0, transparent 50%), 
-    radial-gradient(at 50% 0%, hsla(250,100%,10%,1) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, hsla(220,100%,15%,1) 0, transparent 50%);
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(254, 250, 224, 0.1);
+    color: transparent;
+  }
 }
-
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
