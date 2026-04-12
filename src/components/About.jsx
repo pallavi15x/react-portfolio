@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import animeImg from '../assets/Anime.jpeg'; // Ensure the path to your image is correct
 
-// Quick Reveal Helper Component
 const Reveal = ({ children }) => (
   <motion.div
     initial={{ opacity: 0, y: 50 }}
@@ -18,7 +18,7 @@ const About = () => {
     <section id="about" className="py-32 px-6 bg-[#283618] relative overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
-        {/* LEFT SIDE: Decorative Element */}
+        {/* LEFT SIDE: Decorative Box with Image */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -26,15 +26,26 @@ const About = () => {
           transition={{ duration: 1 }}
           className="relative hidden lg:block"
         >
-          <div className="w-full h-[550px] border border-[#DDA15E]/20 rounded-[40px] relative overflow-hidden flex items-center justify-center bg-[#606C38]/5">
-            <span className="text-[#DDA15E]/5 text-[300px] font-black absolute -bottom-20 -left-10 select-none">
+          <div className="w-full h-[600px] border border-[#DDA15E]/20 rounded-[40px] relative overflow-hidden bg-[#606C38]/5">
+            {/* The Image - Absolute positioned to fill the box or act as a focal point */}
+            <img 
+              src={animeImg} 
+              alt="About Me" 
+              className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-700"
+            />
+            
+            {/* Overlay Gradient to keep text readable */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#283618] via-transparent to-transparent"></div>
+
+            <span className="text-[#DDA15E]/5 text-[300px] font-black absolute -bottom-20 -left-10 select-none z-0">
               A
             </span>
-            <div className="p-12 text-center relative z-10">
-              <h3 className="text-[#FEFAE0] text-4xl font-black uppercase tracking-tighter mb-4 leading-none">
+
+            <div className="p-12 absolute bottom-0 left-0 w-full z-10">
+              <h3 className="text-[#FEFAE0] text-4xl font-black uppercase tracking-tighter mb-2 leading-none">
                 Based in <br/><span className="text-[#DDA15E]">India</span>
               </h3>
-              <div className="h-[1px] w-12 bg-[#DDA15E] mx-auto my-6"></div>
+              <div className="h-[1px] w-12 bg-[#DDA15E] my-4"></div>
               <p className="text-[#FEFAE0]/40 text-[10px] uppercase tracking-[0.5em] font-bold">
                 Available for Remote Work
               </p>
@@ -85,5 +96,4 @@ const About = () => {
     </section>
   );
 };
-
 export default About;
