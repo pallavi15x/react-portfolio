@@ -1,99 +1,45 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { HiMenuAlt3, HiX } from 'react-icons/hi';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import React from 'react';
 
 const Navbar = () => {
-  const [nav, setNav] = useState(false);
-
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Works', href: '#works' },
-    { name: 'Contact', href: '#contact' },
+  const links = [
+    { id: 1, link: 'home', title: 'Home' },
+    { id: 2, link: 'about', title: 'About' },
+    { id: 3, link: 'skills', title: 'Skills' },
+    { id: 4, link: 'works', title: 'Works' },
+    { id: 5, link: 'contact', title: 'Contact' },
   ];
 
-  const handleNav = () => setNav(!nav);
-
   return (
-    <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-6 flex justify-between items-center backdrop-blur-md bg-[#283618]/50"
-    >
-      {/* LOGO */}
-      <div className="text-[#FEFAE0] font-black text-2xl tracking-tighter z-[110]">
-        PALLAVI<span className="text-[#DDA15E]">.</span>
-      </div>
+    <nav className="fixed w-full h-20 z-[9999] bg-[#0a0f0a]/80 backdrop-blur-md px-4 border-b border-white/5">
+      <div className="max-w-7xl mx-auto h-full flex flex-col md:flex-row justify-center md:justify-between items-center py-2">
+        
+        {/* LOGO - Centered on mobile, left-aligned on desktop */}
+        <div className="text-[#FEFAE0] font-black tracking-tighter text-xl md:text-2xl mb-2 md:mb-0">
+          PALLAVI<span className="text-[#DDA15E]">.</span>
+        </div>
 
-      {/* DESKTOP MENU */}
-      <ul className="hidden md:flex gap-10">
-        {navLinks.map((link, index) => (
-          <li key={index}>
-            <a 
-              href={link.href} 
-              className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#FEFAE0]/70 hover:text-[#DDA15E] transition-all"
-            >
-              {link.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-
-      {/* MOBILE TOGGLE BUTTON */}
-      <div className="md:hidden text-[#FEFAE0] z-[110] cursor-pointer" onClick={handleNav}>
-        {nav ? <HiX size={30} /> : <HiMenuAlt3 size={30} />}
-      </div>
-
-      {/* MOBILE MENU OVERLAY */}
-      <AnimatePresence>
-        {nav && (
-          <motion.div 
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.4 }}
-            className="fixed top-0 right-0 w-full h-screen bg-[#283618] flex flex-col items-center justify-center z-[105]"
-          >
-            <ul className="flex flex-col items-center gap-8">
-              {navLinks.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href} 
-                    onClick={handleNav}
-                    className="text-4xl font-black text-[#FEFAE0] uppercase hover:text-[#DDA15E] transition-all"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            {/* MOBILE SOCIAL LINKS - These will show on phone now! */}
-            <div className="flex gap-8 mt-16 border-t border-[#FEFAE0]/10 pt-10">
+        {/* LINKS - Now forced to show on mobile (Removed 'hidden' class) */}
+        <ul className="flex flex-row gap-4 sm:gap-6 md:gap-8">
+          {links.map(({ id, link, title }) => (
+            <li key={id}>
               <a 
-                href="https://github.com/pallavi15x" 
-                target="_blank" 
-                rel="noreferrer"
-                className="p-4 bg-[#606C38]/30 rounded-full text-[#DDA15E]"
+                href={`#${link}`} 
+                className="text-[#FEFAE0]/70 uppercase text-[9px] sm:text-[10px] md:text-[11px] font-bold tracking-[0.1em] sm:tracking-widest hover:text-[#DDA15E] transition-colors whitespace-nowrap"
               >
-                <FaGithub size={25} />
+                {title}
               </a>
-              <a 
-                href="https://www.linkedin.com/in/pallavi-kumari-9864b8380/" 
-                target="_blank" 
-                rel="noreferrer"
-                className="p-4 bg-[#606C38]/30 rounded-full text-[#DDA15E]"
-              >
-                <FaLinkedinIn size={25} />
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+            </li>
+          ))}
+        </ul>
+
+        {/* CONTACT BUTTON - Only shows on larger screens to save space */}
+        <div className="hidden lg:block">
+           <a href="#contact" className="bg-[#DDA15E] text-black px-4 py-1.5 rounded-full text-[10px] font-bold uppercase">Hire Me</a>
+        </div>
+      </div>
+    </nav>
   );
 };
+
 
 export default Navbar;
