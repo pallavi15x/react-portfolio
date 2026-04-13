@@ -53,9 +53,10 @@ function Contact() {
               <div className="group flex flex-col gap-2">
                 <span className="text-[#DDA15E] text-[10px] font-black uppercase tracking-[0.4em]">Email Me</span>
                 <a href="mailto:PALLAVI@DEVELOPER.COM" className="text-[#FEFAE0] text-2xl font-bold tracking-tight hover:text-[#DDA15E] transition-colors flex items-center gap-3">
-                  PALLAVI@DEVELOPER.COM <FaArrowRight className="text-sm -rotate-45 group-hover:rotate-0 transition-transform" />
+                 pallavik81254@.com <FaArrowRight className="text-sm -rotate-45 group-hover:rotate-0 transition-transform" />
                 </a>
               </div>
+
 
               <div className="flex items-center gap-4">
                 {[
@@ -104,7 +105,7 @@ function Contact() {
                     Full Name
                   </label>
                 </div>
-                
+
 
                 <div className="relative group">
                   <input 

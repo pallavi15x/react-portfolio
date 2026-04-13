@@ -10,21 +10,22 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed w-full h-20 z-[9999] bg-[#0a0f0a]/80 backdrop-blur-md px-4 border-b border-white/5">
-      <div className="max-w-7xl mx-auto h-full flex flex-col md:flex-row justify-center md:justify-between items-center py-2">
+    // Fixed height h-24 gives more room so it doesn't look "wrong"
+    <nav className="fixed w-full h-24 z-[9999] bg-[#0a0f0a]/95 backdrop-blur-xl border-b border-white/10 flex items-center">
+      <div className="max-w-7xl mx-auto w-full px-6 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
         
-        {/* LOGO - Centered on mobile, left-aligned on desktop */}
-        <div className="text-[#FEFAE0] font-black tracking-tighter text-xl md:text-2xl mb-2 md:mb-0">
+        {/* LOGO - Now has its own space */}
+        <div className="text-[#FEFAE0] font-black tracking-tighter text-2xl">
           PALLAVI<span className="text-[#DDA15E]">.</span>
         </div>
 
-        {/* LINKS - Now forced to show on mobile (Removed 'hidden' class) */}
-        <ul className="flex flex-row gap-4 sm:gap-6 md:gap-8">
+        {/* LINKS - Spaced out properly so they don't overlap */}
+        <ul className="flex flex-row items-center gap-4 sm:gap-8">
           {links.map(({ id, link, title }) => (
             <li key={id}>
               <a 
                 href={`#${link}`} 
-                className="text-[#FEFAE0]/70 uppercase text-[9px] sm:text-[10px] md:text-[11px] font-bold tracking-[0.1em] sm:tracking-widest hover:text-[#DDA15E] transition-colors whitespace-nowrap"
+                className="text-[#FEFAE0]/50 uppercase text-[10px] sm:text-xs font-bold tracking-[0.2em] hover:text-[#DDA15E] hover:scale-110 transition-all inline-block"
               >
                 {title}
               </a>
@@ -32,9 +33,14 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* CONTACT BUTTON - Only shows on larger screens to save space */}
-        <div className="hidden lg:block">
-           <a href="#contact" className="bg-[#DDA15E] text-black px-4 py-1.5 rounded-full text-[10px] font-bold uppercase">Hire Me</a>
+        {/* HIRE ME BUTTON - Hidden on small mobile to keep it clean */}
+        <div className="hidden sm:block">
+           <a 
+             href="#contact" 
+             className="bg-[#DDA15E] text-black px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#FEFAE0] transition-all"
+           >
+             Hire Me
+           </a>
         </div>
       </div>
     </nav>
