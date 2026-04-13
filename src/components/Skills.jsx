@@ -39,7 +39,6 @@ const Skills = () => {
       
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Header Section */}
         <div className="mb-20">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -59,7 +58,6 @@ const Skills = () => {
           </motion.h2>
         </div>
 
-        {/* UNIFORM PROFESSIONAL GRID */}
         <motion.div 
           variants={containerVars}
           initial="initial"
@@ -73,14 +71,12 @@ const Skills = () => {
               variants={itemVars}
               className="group relative h-32 flex items-center p-8 bg-[#1a2410]/20 border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#DDA15E]/50 hover:bg-[#1a2410]/40"
             >
-              {/* Subtle background glow on hover */}
               <div 
                 className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500"
                 style={{ background: `radial-gradient(circle at center, ${skill.color}, transparent)` }}
               />
 
               <div className="flex items-center gap-6 z-10 w-full">
-                {/* Icon with clean transition */}
                 <div 
                   className="text-4xl transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(221,161,94,0.3)]"
                   style={{ color: skill.color }}
@@ -98,13 +94,11 @@ const Skills = () => {
                 </div>
               </div>
 
-              {/* Minimal corner accent */}
               <div className="absolute top-0 right-0 w-0 h-0 border-t-[1px] border-r-[1px] border-[#DDA15E] opacity-0 group-hover:opacity-100 group-hover:w-4 group-hover:h-4 transition-all duration-500" />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Bottom Detail */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

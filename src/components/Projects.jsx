@@ -65,7 +65,6 @@ function Projects() {
   return (
     <section id="works" className="py-32 px-6 bg-[#0a0f0a] relative overflow-hidden">
       
-      {/* BACKGROUND TEXT DECOR */}
       <div className="absolute top-20 -left-20 opacity-[0.03] select-none pointer-events-none">
         <h2 className="text-[25vw] font-black leading-none">CREATIONS</h2>
       </div>
@@ -89,7 +88,6 @@ function Projects() {
             </motion.h2>
           </div>
 
-          {/* FILTER BUTTONS */}
           <div className="flex flex-wrap gap-4">
             {categories.map((cat) => (
               <button
@@ -107,7 +105,6 @@ function Projects() {
           </div>
         </div>
 
-        {/* PROJECTS GRID */}
         <motion.div 
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -123,7 +120,6 @@ function Projects() {
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="group relative h-[500px] rounded-[32px] overflow-hidden bg-[#111611] border border-white/5"
               >
-                {/* IMAGE COMPONENT */}
                 <div className="absolute inset-0 z-0">
                   <img 
                     src={p.img} 
@@ -133,7 +129,6 @@ function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f0a] via-[#0a0f0a]/60 to-transparent" />
                 </div>
 
-                {/* OVERLAY CONTENT */}
                 <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
                   <div className="flex justify-between items-start">
                     <span className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-[#DDA15E] font-mono text-xs">
@@ -168,7 +163,6 @@ function Projects() {
                   </div>
                 </div>
 
-                {/* HOVER GLOW EFFECT */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
                   <div className="absolute -inset-[100%] bg-gradient-to-r from-transparent via-[#DDA15E]/5 to-transparent skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                 </div>
@@ -178,7 +172,6 @@ function Projects() {
         </motion.div>
       </div>
 
-      {/* FOOTER DECOR */}
       <div className="mt-32 w-full h-[1px] bg-gradient-to-r from-transparent via-[#DDA15E]/20 to-transparent" />
     </section>
   );

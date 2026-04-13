@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    /* FIXED: Background color changed to #0a0f0a to match Navbar and Hero */
+    
     <div className="bg-[#0a0f0a] min-h-screen relative selection:bg-[#DDA15E] selection:text-black overflow-x-hidden">
       
       <Navbar />
@@ -24,7 +24,6 @@ function App() {
         <Contact />
       </main>
 
-      {/* This Footer is what shows at the bottom. We need to fix the logo inside it. */}
       <Footer />
     </div>
   );

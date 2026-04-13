@@ -29,7 +29,6 @@ const SocialSidebar = () => {
         </a>
       </div>
       
-      {/* Decorative vertical line */}
       <div className="w-[1px] h-32 bg-gradient-to-t from-[#DDA15E] to-transparent"></div>
     </motion.div>
   );

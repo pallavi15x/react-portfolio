@@ -25,17 +25,14 @@ const About = () => {
       
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         
-        {/* LEFT SIDE: ORGANIC CIRCULAR PORTAL */}
         <div className="lg:col-span-5 relative flex justify-center items-center">
           
-          {/* Animated Glow behind the circle */}
           <motion.div 
             animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
             transition={{ duration: 4, repeat: Infinity }}
             className="absolute w-72 h-72 bg-[#DDA15E]/20 blur-[80px] rounded-full" 
           />
 
-          {/* THE IMAGE: Organic Morphing Circle */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -43,7 +40,7 @@ const About = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] z-10 group overflow-hidden border-2 border-[#DDA15E]/30 shadow-2xl"
             style={{ 
-              // This creates the "cyclic/blob" shape that isn't a boring perfect circle
+
               borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" 
             }}
           >
@@ -54,11 +51,9 @@ const About = () => {
               className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
             />
             
-            {/* Soft Overlay Light */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#283618]/40 to-transparent pointer-events-none" />
           </motion.div>
 
-          {/* Floating Element: Rotating Text Ring */}
           <motion.div 
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -66,7 +61,6 @@ const About = () => {
           />
         </div>
 
-        {/* RIGHT SIDE: TEXT CONTENT */}
         <motion.div 
           variants={containerVars}
           initial="initial"
@@ -82,7 +76,7 @@ const About = () => {
             
             <motion.h2 variants={itemVars} className="text-7xl md:text-9xl font-black text-[#FEFAE0] leading-[0.85] uppercase tracking-tighter">
               BORN TO <br />
-              
+
               <span className="text-transparent" style={{ WebkitTextStroke: "1px #DDA15E" }}>CREATE</span>
             </motion.h2>
           </div>
@@ -97,7 +91,6 @@ const About = () => {
             </p>
           </motion.div>
 
-          {/* Skill Tags */}
           <motion.div variants={itemVars} className="flex flex-wrap gap-3">
              {["React", "Node", "Design", "Logic"].map((tag) => (
                <span key={tag} className="px-4 py-1 border border-[#FEFAE0]/20 rounded-full text-[#FEFAE0]/40 text-[10px] uppercase font-bold tracking-widest hover:text-[#DDA15E] hover:border-[#DDA15E] transition-colors cursor-default">

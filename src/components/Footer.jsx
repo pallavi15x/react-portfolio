@@ -3,7 +3,6 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer className="py-10 border-t border-white/5 flex flex-col items-center gap-4">
-      {/* LOGO - NO DOT */}
       <div className="text-[#FEFAE0] font-black tracking-[0.3em] text-xl uppercase">
         PALLAVI
       </div>

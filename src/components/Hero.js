@@ -7,7 +7,6 @@ const Hero = () => {
   const { scrollY } = useScroll();
   const containerRef = useRef(null);
 
-  // --- 1. 3D PERSPECTIVE MOUSE ANIMATION ---
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -55,7 +54,6 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0f0a] pt-20 px-6 cursor-default"
     >
       
-      {/* BACKGROUND ANIMATED MESH */}
       <div className="absolute inset-0 z-0">
         <motion.div 
           animate={{ 
@@ -67,7 +65,6 @@ const Hero = () => {
         />
       </div>
 
-      {/* CONTINUOUS MARQUEE BACKGROUND TEXT */}
       <div className="absolute top-1/4 w-full overflow-hidden opacity-[0.02] pointer-events-none select-none">
         <motion.div 
           animate={{ x: [0, -1000] }}
@@ -81,7 +78,6 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto w-full z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         
-        {/* LEFT CONTENT */}
         <motion.div 
           variants={containerVars}
           initial="initial"
@@ -127,7 +123,6 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT CONTENT: THE 3D INTERACTIVE HUB */}
         <motion.div 
           style={{ rotateX, rotateY, perspective: 1000 }}
           className="lg:col-span-5 relative flex justify-center items-center"
@@ -138,7 +133,6 @@ const Hero = () => {
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-[320px] h-[400px] md:w-[450px] md:h-[550px]"
           >
-            {/* Trapezoid Image Frame */}
             <motion.div 
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -149,11 +143,9 @@ const Hero = () => {
                 src={animeImg} 
                 alt="Profile" 
                 className="w-full h-full object-cover transition-all duration-1000 scale-110" 
-                // COLOR FIX: Removed grayscale-[0.5] and hover:grayscale-0 classes
               />
             </motion.div>
 
-            {/* FLOATING 3D CARDS */}
             <motion.div 
               style={{ translateZ: 100 }}
               animate={{ x: [0, 10, 0] }}
@@ -176,14 +168,12 @@ const Hero = () => {
               <div className="text-[#FEFAE0]/40 text-[9px] uppercase font-bold tracking-[0.2em] mt-1">Worldwide</div>
             </motion.div>
 
-            {/* Back Glow */}
             <div className="absolute inset-0 bg-[#DDA15E]/20 blur-[100px] -z-10 rounded-full animate-pulse" />
           </motion.div>
         </motion.div>
 
       </div>
 
-      {/* FOOTER SCROLL DECOR */}
       <div className="absolute bottom-10 w-full flex justify-center opacity-20">
         <div className="h-16 w-[1px] bg-gradient-to-b from-[#DDA15E] to-transparent" />
       </div>
