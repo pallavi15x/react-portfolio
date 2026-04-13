@@ -82,6 +82,7 @@ const About = () => {
             
             <motion.h2 variants={itemVars} className="text-7xl md:text-9xl font-black text-[#FEFAE0] leading-[0.85] uppercase tracking-tighter">
               BORN TO <br />
+              
               <span className="text-transparent" style={{ WebkitTextStroke: "1px #DDA15E" }}>CREATE</span>
             </motion.h2>
           </div>
