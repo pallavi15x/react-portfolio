@@ -98,7 +98,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.h1 variants={itemVars} style={{ y: yText }} className="text-8xl md:text-[150px] font-black uppercase tracking-tighter text-[#FEFAE0] leading-[0.8]">
-            PALLAVI<span className="text-[#DDA15E] animate-pulse">.</span>
+            PALLAVI<span className="text-[#DDA15E] animate-pulse"></span>
           </motion.h1>
           
           <motion.p variants={itemVars} className="text-[#FEFAE0]/60 text-lg md:text-xl max-w-xl leading-relaxed italic">

@@ -10,36 +10,39 @@ const Navbar = () => {
   ];
 
   return (
-    // Fixed height h-24 gives more room so it doesn't look "wrong"
-    <nav className="fixed w-full h-24 z-[9999] bg-[#0a0f0a]/95 backdrop-blur-xl border-b border-white/10 flex items-center">
-      <div className="max-w-7xl mx-auto w-full px-6 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
+    <nav className="fixed w-full h-24 z-[9999] bg-[#0a0f0a]/90 backdrop-blur-xl border-b border-white/5 flex items-center">
+      <div className="max-w-7xl mx-auto w-full px-8 flex flex-col md:flex-row justify-between items-center">
         
-        {/* LOGO - Now has its own space */}
-        <div className="text-[#FEFAE0] font-black tracking-tighter text-2xl">
-          PALLAVI<span className="text-[#DDA15E]">.</span>
+        {/* LOGO - No dot, no AI look. Just clean, spaced typography */}
+        <div className="group cursor-pointer">
+          <span className="text-[#FEFAE0] font-black tracking-[0.3em] text-2xl uppercase transition-all duration-500 group-hover:tracking-[0.5em] group-hover:text-[#DDA15E]">
+            PALLAVI
+          </span>
         </div>
 
-        {/* LINKS - Spaced out properly so they don't overlap */}
-        <ul className="flex flex-row items-center gap-4 sm:gap-8">
+        {/* NAVIGATION - Minimalist and widely spaced */}
+        <ul className="flex flex-row items-center gap-8 sm:gap-14">
           {links.map(({ id, link, title }) => (
-            <li key={id}>
+            <li key={id} className="relative group">
               <a 
                 href={`#${link}`} 
-                className="text-[#FEFAE0]/50 uppercase text-[10px] sm:text-xs font-bold tracking-[0.2em] hover:text-[#DDA15E] hover:scale-110 transition-all inline-block"
+                className="text-[#FEFAE0]/40 uppercase text-[10px] sm:text-[11px] font-bold tracking-[0.3em] group-hover:text-[#FEFAE0] transition-all duration-300"
               >
                 {title}
               </a>
+              {/* Subtle underline that appears on hover */}
+              <span className="absolute -bottom-2 left-1/2 w-0 h-[1px] bg-[#DDA15E] transition-all duration-500 group-hover:w-full group-hover:left-0"></span>
             </li>
           ))}
         </ul>
 
-        {/* HIRE ME BUTTON - Hidden on small mobile to keep it clean */}
-        <div className="hidden sm:block">
+        {/* CTA - Minimalist Button */}
+        <div className="hidden lg:block">
            <a 
              href="#contact" 
-             className="bg-[#DDA15E] text-black px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#FEFAE0] transition-all"
+             className="text-[#DDA15E] text-[10px] font-black uppercase tracking-[0.4em] hover:text-[#FEFAE0] transition-colors duration-300"
            >
-             Hire Me
+             Let's Talk
            </a>
         </div>
       </div>
