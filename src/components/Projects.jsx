@@ -1,111 +1,185 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 const projects = [
-  { title: "Finance Tracker", tech: "React / D3.JS", github: "https://github.com/pallavi15x/finance-tracker", live: "https://pallavi15x.github.io/finance-tracker" },
-  { title: "Task Manager", tech: "Firebase", github: "https://github.com/pallavi15x/task-manager", live: "https://pallavi15x.github.io/task-manager" },
-  { title: "Quiz Master", tech: "Javascript", github: "https://github.com/pallavi15x/quiz-app", live: "https://pallavi15x.github.io/quiz-app/" },
-  { title: "Calculator App", tech: "Algorithm", github: "https://github.com/pallavi15x/CALCULATOR-APP", live: "https://pallavi15x.github.io/CALCULATOR-APP/" },
-  { title: "Modern UI Project", tech: "Figma", github: "https://github.com/pallavi15x/MyProject", live: "https://pallavi15x.github.io/MyProject/" },
-  { title: "Developer Portfolio", tech: "Motion", github: "https://github.com/pallavi15x/Portfolio", live: "https://pallavi15x.github.io/Portfolio/" },
+  { 
+    title: "Finance Tracker", 
+    tech: "React", 
+    category: "Web",
+    img: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=1200&auto=format", 
+    github: "https://github.com/pallavi15x/finance-tracker", 
+    live: "https://pallavi15x.github.io/finance-tracker" 
+  },
+  { 
+    title: "Task Manager", 
+    tech: "Firebase", 
+    category: "App",
+    img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=1200&auto=format",
+    github: "https://github.com/pallavi15x/task-manager", 
+    live: "https://pallavi15x.github.io/task-manager" 
+  },
+  { 
+    title: "Quiz Master", 
+    tech: "Javascript", 
+    category: "Web",
+    img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1200&auto=format",
+    github: "https://github.com/pallavi15x/quiz-app", 
+    live: "https://pallavi15x.github.io/quiz-app/" 
+  },
+  { 
+    title: "Calculator App", 
+    tech: "Algorithms", 
+    category: "App",
+    img: "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/da709b189684199.65af65134cbe2.jpg",
+    github: "https://github.com/pallavi15x/CALCULATOR-APP", 
+    live: "https://pallavi15x.github.io/CALCULATOR-APP/" 
+  },
+  { 
+    title: "Modern UI Project", 
+    tech: "Figma", 
+    category: "Design",
+    img: "https://img.freepik.com/premium-photo/cloud-services-business-people-touch-laptop-user-interface-with-technology-concept-isometric-illustration-background_551826-7716.jpg",
+    github: "https://github.com/pallavi15x/MyProject", 
+    live: "https://pallavi15x.github.io/MyProject/" 
+  },
+  { 
+    title: "Developer Portfolio", 
+    tech: "Motion", 
+    category: "Design",
+    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format",
+    github: "https://github.com/pallavi15x/Portfolio", 
+    live: "https://pallavi15x.github.io/Portfolio/" 
+  },
 ];
 
+const categories = ["All", "Web", "App", "Design"];
+
 function Projects() {
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const cards = document.getElementsByClassName("glass-card");
-      for (const card of cards) {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty("--mouse-x", `${x}px`);
-        card.style.setProperty("--mouse-y", `${y}px`);
-      }
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  const [filter, setFilter] = useState("All");
+
+  const filteredProjects = projects.filter(p => 
+    filter === "All" ? true : p.category === filter
+  );
 
   return (
-    <section id="works" className="py-32 px-6 max-w-7xl mx-auto scroll-mt-24 bg-[#283618]">
-      {/* CSS for the Mouse Glow Effect */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        .glass-card::before {
-          background: radial-gradient(
-            800px circle at var(--mouse-x) var(--mouse-y),
-            rgba(221, 161, 94, 0.15),
-            transparent 40%
-          );
-          border-radius: inherit;
-          content: "";
-          height: 100%;
-          left: 0px;
-          opacity: 0;
-          transition: opacity 500ms;
-          position: absolute;
-          top: 0px;
-          width: 100%;
-          z-index: 3;
-        }
-        .glass-card:hover::before {
-          opacity: 1;
-        }
-      `}} />
-
-      <div className="flex flex-col mb-24">
-        <h2 className="text-7xl md:text-8xl font-black uppercase tracking-tighter text-[#FEFAE0] leading-none">
-          WORKS<span className="text-[#DDA15E]">.</span>
-        </h2>
-        <p className="text-[#FEFAE0]/40 mt-6 max-w-md text-xs font-bold uppercase tracking-[0.3em]">
-          // Selected Digital Exhibits
-        </p>
+    <section id="works" className="py-32 px-6 bg-[#0a0f0a] relative overflow-hidden">
+      
+      {/* BACKGROUND TEXT DECOR */}
+      <div className="absolute top-20 -left-20 opacity-[0.03] select-none pointer-events-none">
+        <h2 className="text-[25vw] font-black leading-none">CREATIONS</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {projects.map((p, i) => (
-          <div 
-            key={i} 
-            className="glass-card p-10 h-[450px] flex flex-col justify-between group bg-[#606C38]/10 border border-[#606C38]/20 rounded-[40px] relative overflow-hidden transition-transform duration-500 hover:-translate-y-2"
-          >
-            {/* Background number - Behind content */}
-            <span className="absolute top-10 right-10 text-[#FEFAE0]/5 font-black italic text-8xl group-hover:text-[#DDA15E]/10 transition-all pointer-events-none z-0">
-              0{i+1}
-            </span>
-
-            <div className="relative z-10 space-y-4">
-              <span className="text-[#DDA15E] font-mono text-[10px] uppercase tracking-[0.4em] font-black block">
-                {p.tech}
-              </span>
-              <h3 className="text-4xl font-black uppercase text-[#FEFAE0] leading-tight max-w-[80%]">
-                {p.title}
-              </h3>
-            </div>
-            
-            <div className="flex items-center gap-6 relative z-10">
-              <a 
-                href={p.live} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="w-16 h-16 rounded-full border border-[#FEFAE0]/10 flex items-center justify-center text-[#FEFAE0] hover:bg-[#DDA15E] hover:border-[#DDA15E] hover:text-[#283618] transition-all duration-500 shadow-xl"
-              >
-                <FaArrowUpRightFromSquare size={20} />
-              </a>
-              
-              <div className="h-[1px] flex-grow bg-[#606C38]/40"></div>
-              
-              <a 
-                href={p.github} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="group/link flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#FEFAE0]/30 hover:text-[#FEFAE0] transition-all"
-              >
-                <FaGithub size={18} className="group-hover/link:text-[#DDA15E]" />
-                <span className="hidden sm:inline">Github</span>
-              </a>
-            </div>
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+          <div>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-[#DDA15E] font-black uppercase tracking-[0.5em] text-[10px] mb-4"
+            >
+              03. Selected Works
+            </motion.p>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-7xl md:text-9xl font-black text-[#FEFAE0] uppercase tracking-tighter leading-none"
+            >
+              Projects<span className="text-[#DDA15E]">.</span>
+            </motion.h2>
           </div>
-        ))}
+
+          {/* FILTER BUTTONS */}
+          <div className="flex flex-wrap gap-4">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 border ${
+                  filter === cat 
+                  ? "bg-[#DDA15E] border-[#DDA15E] text-[#0a0f0a]" 
+                  : "bg-transparent border-[#FEFAE0]/10 text-[#FEFAE0]/40 hover:border-[#FEFAE0]/30"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* PROJECTS GRID */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((p, i) => (
+              <motion.div
+                key={p.title}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="group relative h-[500px] rounded-[32px] overflow-hidden bg-[#111611] border border-white/5"
+              >
+                {/* IMAGE COMPONENT */}
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src={p.img} 
+                    alt={p.title}
+                    className="w-full h-full object-cover grayscale-[0.4] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f0a] via-[#0a0f0a]/60 to-transparent" />
+                </div>
+
+                {/* OVERLAY CONTENT */}
+                <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
+                  <div className="flex justify-between items-start">
+                    <span className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-[#DDA15E] font-mono text-xs">
+                      0{i + 1}
+                    </span>
+                    <div className="flex gap-3">
+                      <a href={p.github} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-[#FEFAE0] hover:bg-[#DDA15E] hover:text-black transition-all">
+                        <FaGithub />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="h-[1px] w-8 bg-[#DDA15E]" />
+                      <span className="text-[#DDA15E] font-mono text-[10px] uppercase tracking-[0.3em] font-bold">
+                        {p.tech}
+                      </span>
+                    </div>
+                    <h3 className="text-4xl font-black text-[#FEFAE0] uppercase tracking-tight mb-6">
+                      {p.title}
+                    </h3>
+                    
+                    <a 
+                      href={p.live} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-[#FEFAE0] text-black rounded-full font-black uppercase text-[10px] tracking-widest group-hover:bg-[#DDA15E] transition-colors"
+                    >
+                      View Project <FaArrowUpRightFromSquare size={12} />
+                    </a>
+                  </div>
+                </div>
+
+                {/* HOVER GLOW EFFECT */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                  <div className="absolute -inset-[100%] bg-gradient-to-r from-transparent via-[#DDA15E]/5 to-transparent skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
+
+      {/* FOOTER DECOR */}
+      <div className="mt-32 w-full h-[1px] bg-gradient-to-r from-transparent via-[#DDA15E]/20 to-transparent" />
     </section>
   );
 }
