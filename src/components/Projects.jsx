@@ -85,7 +85,7 @@ function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               className="text-7xl md:text-9xl font-black text-[#FEFAE0] uppercase tracking-tighter leading-none"
             >
-              Projects<span className="text-[#DDA15E]">.</span>
+              Projects<span className="text-[#DDA15E]"></span>
             </motion.h2>
           </div>
 

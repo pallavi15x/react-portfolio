@@ -42,7 +42,7 @@ function Contact() {
               <h2 className="text-8xl md:text-9xl font-black uppercase tracking-tighter text-[#FEFAE0] leading-[0.85] mb-8">
                 HAVE A<br />
                 <span className="text-transparent" style={{ WebkitTextStroke: "1px #DDA15E" }}>VISION?</span><br />
-                TALK<span className="text-[#DDA15E]">.</span>
+                TALK<span className="text-[#DDA15E]"></span>
               </h2>
               <p className="text-[#FEFAE0]/50 text-xl max-w-sm leading-relaxed font-medium">
                 I'm currently available for freelance projects and full-time opportunities. Let's build something iconic.
