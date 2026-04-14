@@ -126,7 +126,7 @@ function Contact() {
                   placeholder=" "
                 ></textarea>
                 <label className="absolute left-0 top-4 text-[#FEFAE0]/20 text-xs font-black uppercase tracking-widest pointer-events-none transition-all peer-focus:-top-4 peer-focus:text-[#DDA15E] peer-focus:text-[10px] peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-[10px]">
-                  Your Project Details
+                  Comments
                 </label>
               </div>
 
